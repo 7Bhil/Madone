@@ -171,7 +171,7 @@ export default function ParentPortalPreview() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800 text-slate-300">
-                      {grades.subjects.map((sub, idx) => (
+                      {(grades?.subjects || []).map((sub, idx) => (
                         <tr key={idx} className="hover:bg-slate-800/40 transition-colors">
                           <td className="p-3.5 font-bold text-white">{sub.name}</td>
                           <td className="p-3.5 text-slate-400">{sub.teacher}</td>
@@ -195,7 +195,7 @@ export default function ParentPortalPreview() {
                 </div>
 
                 <div className="grid gap-3">
-                  {homework.map((hw, idx) => (
+                  {(homework || []).map((hw, idx) => (
                     <div
                       key={idx}
                       className="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
@@ -257,7 +257,7 @@ export default function ParentPortalPreview() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800 text-slate-300">
-                      {payments.history.map((p, idx) => (
+                      {(payments?.history || []).map((p, idx) => (
                         <tr key={idx} className="hover:bg-slate-800/40 transition-colors">
                           <td className="p-3.5 font-bold text-white">{p.label}</td>
                           <td className="p-3.5 font-extrabold text-gold-400">

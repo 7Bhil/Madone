@@ -145,25 +145,39 @@ export const about = {
 export const parentPortalMock = {
   student: {
     name: "Kouassi Marie-Lys",
-    class: "Classe de CM2 Elite",
+    class: "CM2 Elite",
     matricule: "MAD-2024-089",
-    avatar: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80",
-    average: "18.45 / 20",
-    rank: "1ère / 28 élèves",
+    year: "2024-2025",
+    photo: "ML",
     attendance: "99.2%",
   },
-  grades: [
-    { subject: "Mathématiques", note: "19.5/20", appreciation: "Excellente maîtrise du calcul et de la géométrie" },
-    { subject: "Français & Dictée", note: "18.0/20", appreciation: "Orthographe impeccable, expression écrite fluide" },
-    { subject: "Anglais Bilingue", note: "19.0/20", appreciation: "Aisance orale remarquable" },
-    { subject: "Sciences & STEM", note: "17.5/20", appreciation: "Esprit d'analyse très développé" },
-    { subject: "Histoire & Géographie", note: "18.5/20", appreciation: "Travail très sérieux et soigné" },
+  grades: {
+    trimester: "1er Trimestre",
+    overallAverage: "18.45",
+    rank: "1ère / 28",
+    appreciation: "Félicitations du Conseil de Classe",
+    subjects: [
+      { name: "Mathématiques & Calcul", score: "19.5", teacher: "M. Koffi", comment: "Excellente maîtrise du calcul mental et résolution de problèmes." },
+      { name: "Français & Expression Écrite", score: "18.0", teacher: "Mme Diallo", comment: "Orthographe irréprochable et belle créativité littéraire." },
+      { name: "Anglais Bilingue (Cambridge)", score: "19.0", teacher: "Mr. Smith", comment: "Vocabulaire riche et très bonne aisance orale." },
+      { name: "Sciences & Ateliers STEM", score: "17.5", teacher: "M. Mensah", comment: "Très bon esprit de logique et de programmation." },
+      { name: "Histoire & Éducation Civique", score: "18.5", teacher: "Mme Kouassi", comment: "Élève sérieuse, participante et très curieuse." },
+    ],
+  },
+  homework: [
+    { subject: "Mathématiques", title: "Exercices 4 et 5 p.62 (Fractions)", dueDate: "Demain 08h00", status: "Fait" },
+    { subject: "Anglais", title: "Vocabulaire Unit 4 + Récitation oral", dueDate: "Jeudi 28 Août", status: "À faire" },
+    { subject: "STEM Robotique", title: "Rapport d'expérience sur les engrenages", dueDate: "Lundi 01 Septembre", status: "Fait" },
   ],
-  recentHomework: [
-    { subject: "Mathématiques", task: "Exercices 4 et 5 page 62 sur les fractions", dueDate: "Demain" },
-    { subject: "Anglais", task: "Apprendre le vocabulaire de l'unité 4", dueDate: "Jeudi" },
-    { subject: "Sciences", task: "Préparer la maquette du système solaire", dueDate: "Lundi prochain" },
-  ],
+  payments: {
+    status: "Régularisé",
+    history: [
+      { label: "Droits de Réinscription 2024-2025", amount: 50000, date: "05/07/2024", status: "Payé" },
+      { label: "1ère Tranche Scolarité CM2", amount: 150000, date: "05/07/2024", status: "Payé" },
+      { label: "Service Cantine Bio (1er Trimestre)", amount: 60000, date: "15/08/2024", status: "Payé" },
+      { label: "Option Transport Zone 1 (1er Trimestre)", amount: 45000, date: "15/08/2024", status: "Payé" },
+    ],
+  },
 };
 
 export const canteenMenu = {
