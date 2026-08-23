@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { news } from "../data/content";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Tag, ArrowRight, X, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight, X } from "lucide-react";
 
 export default function Actualites() {
   const [selectedCategory, setSelectedCategory] = useState("Toutes");
@@ -14,7 +14,7 @@ export default function Actualites() {
     : news.filter(n => n.category === selectedCategory);
 
   return (
-    <div className="pt-20 bg-slate-50 min-h-screen pb-16">
+    <div className="bg-slate-50 min-h-screen pb-16">
       <div className="bg-slate-900 text-white py-14 px-4 sm:px-6 text-center">
         <span className="bg-brand-500/20 text-brand-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
           Vie de l'Établissement
@@ -91,14 +91,18 @@ export default function Actualites() {
         </div>
       </div>
 
-      {/* Article Reading Modal */}
+      {/* Article Reading Modal with backdrop click close */}
       <AnimatePresence>
         {activeArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm"
+            onClick={() => setActiveArticle(null)}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col"
             >
               <button

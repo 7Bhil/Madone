@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles, PhoneCall } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { school } from "../../data/content";
 
 const faqResponses: Record<string, string> = {
@@ -72,10 +72,10 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-4 sm:right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 overflow-hidden flex flex-col h-[500px]"
+            className="fixed bottom-24 right-4 sm:right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 overflow-hidden flex flex-col h-[480px] max-h-[75vh]"
           >
             {/* Chatbot Header */}
-            <div className="bg-slate-900 text-white p-4 flex items-center justify-between border-b border-slate-800">
+            <div className="bg-slate-900 text-white p-4 flex items-center justify-between border-b border-slate-800 shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-gold-400">
                   <Bot className="w-5 h-5" />
@@ -94,7 +94,7 @@ export default function Chatbot() {
             </div>
 
             {/* Quick Prompts */}
-            <div className="bg-slate-50 p-2.5 border-b border-slate-100 flex overflow-x-auto gap-1.5 text-xs">
+            <div className="bg-slate-50 p-2.5 border-b border-slate-100 flex overflow-x-auto gap-1.5 text-xs shrink-0">
               {quickQuestions.map((q) => (
                 <button
                   key={q.key}
@@ -127,7 +127,7 @@ export default function Chatbot() {
             </div>
 
             {/* Form Input */}
-            <form onSubmit={handleSend} className="p-3 bg-white border-t border-slate-200 flex gap-2">
+            <form onSubmit={handleSend} className="p-3 bg-white border-t border-slate-200 flex gap-2 shrink-0">
               <input
                 type="text"
                 value={input}

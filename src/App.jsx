@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Chatbot from "./components/ui/Chatbot";
@@ -13,12 +14,32 @@ import Galerie from "./pages/Galerie";
 import FAQ from "./pages/FAQ";
 import MentionsLegales from "./pages/MentionsLegales";
 
+function ScrollHandler() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="font-sans">
+      <ScrollHandler />
+      <div className="font-sans min-h-screen flex flex-col justify-between">
         <Navbar />
-        <main className="pt-20">
+        <main className="pt-24 sm:pt-28 flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/apropos" element={<Apropos />} />
