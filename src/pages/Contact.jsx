@@ -18,8 +18,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-20 bg-slate-50 min-h-screen pb-16">
-      <div className="bg-slate-900 text-white py-14 px-4 sm:px-6 text-center">
+    <div className="bg-slate-50 min-h-screen pb-12">
+      <div className="bg-slate-900 text-white py-10 px-4 sm:px-6 text-center">
         <span className="bg-brand-500/20 text-brand-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
           Accueil & Visites
         </span>

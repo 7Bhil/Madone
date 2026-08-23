@@ -4,9 +4,9 @@ import { about, school, partners } from "../data/content.js";
 
 export default function Apropos() {
   return (
-    <div className="pt-20 bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen pb-12">
       {/* Page Header */}
-      <section className="bg-slate-900 text-white py-16 px-4 sm:px-6 relative overflow-hidden">
+      <section className="bg-slate-900 text-white py-10 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <span className="bg-brand-500/20 text-brand-300 border border-brand-500/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -22,7 +22,7 @@ export default function Apropos() {
       </section>
 
       {/* Main Content */}
-      <section className="py-16 px-4 sm:px-6 max-w-6xl mx-auto space-y-16">
+      <section className="py-10 px-4 sm:px-6 max-w-6xl mx-auto space-y-12">
         {/* Story */}
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 space-y-4">

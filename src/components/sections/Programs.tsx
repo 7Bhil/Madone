@@ -13,7 +13,7 @@ const iconMap: Record<string, any> = {
 export default function Programs() {
   return (
     <section id="classes" className="py-section px-4 sm:px-6 bg-slate-50 relative">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-7xl mx-auto space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

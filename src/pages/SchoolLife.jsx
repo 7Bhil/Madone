@@ -13,9 +13,9 @@ export default function SchoolLifePage() {
   ];
 
   return (
-    <div className="pt-20 bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 min-h-screen pb-12">
       {/* Header */}
-      <div className="bg-slate-900 text-white py-14 px-4 sm:px-6 text-center">
+      <div className="bg-slate-900 text-white py-10 px-4 sm:px-6 text-center">
         <span className="bg-brand-500/20 text-brand-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
           Épanouissement & Activités
         </span>
@@ -31,7 +31,7 @@ export default function SchoolLifePage() {
       <CanteenMenu />
 
       {/* Extracurricular Clubs */}
-      <section className="py-16 px-4 sm:px-6 max-w-7xl mx-auto">
+      <section className="py-10 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl font-extrabold text-slate-900">
             Clubs Périscolaires du Mercredi & Samedi

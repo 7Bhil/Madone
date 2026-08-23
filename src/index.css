@@ -18,7 +18,7 @@
 }
 
 .py-section {
-  @apply py-16 sm:py-20;
+  @apply py-12 sm:py-14;
 }
 
 .glass-card {

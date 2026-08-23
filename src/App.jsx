@@ -39,7 +39,7 @@ export default function App() {
       <ScrollHandler />
       <div className="font-sans min-h-screen flex flex-col justify-between">
         <Navbar />
-        <main className="pt-24 sm:pt-28 flex-1">
+        <main className="pt-[88px] flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/apropos" element={<Apropos />} />

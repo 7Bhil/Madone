@@ -5,7 +5,7 @@ import { Award, Heart, Sparkles, Users, Quote, CheckCircle2 } from "lucide-react
 export default function About() {
   return (
     <section id="about" className="py-section px-4 sm:px-6 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-20">
+      <div className="max-w-7xl mx-auto space-y-12">
         {/* Top Header & History */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
@@ -64,7 +64,7 @@ export default function About() {
 
         {/* 4 Pillars Grid */}
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Nos 4 Piliers Éducatifs
             </h3>
