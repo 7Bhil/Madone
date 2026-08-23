@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, PhoneCall } from "lucide-react";
+import { school } from "../../data/content";
 
-const faqResponses = {
-  default: "Je suis un assistant virtuel pour l'école La Madone. Je peux vous aider avec des informations sur l'inscription, les classes, les horaires, etc. Que souhaitez-vous savoir ?",
-  inscription: "Pour inscrire votre enfant, vous pouvez remplir le formulaire sur la page Inscription. L'école vous recontactera ensuite pour finaliser l'inscription. Les documents requis sont : certificat de naissance, photos d'identité, et bulletin scolaire précédent.",
-  classes: "Nous proposons des classes de la maternelle (Petite, Moyenne, Grande section) jusqu'au CM2. Chaque niveau est adapté à l'âge et au développement de l'enfant.",
-  horaires: "L'école est ouverte du lundi au vendredi de 7h30 à 16h30. La garderie est disponible avant et après les heures de classe sur demande.",
-  frais: "Les frais de scolarité varient selon le niveau. Pour connaître les tarifs actuels, veuillez contacter l'administration par téléphone ou email.",
-  contact: "Vous pouvez nous contacter par téléphone au +229 XX XX XX XX, par email à contact@lamadone.bj, ou directement sur la page Contact du site.",
-  repas: "Une cantine est disponible avec des repas équilibrés préparés sur place. Les menus sont affichés chaque semaine.",
-  transport: "Un service de transport scolaire est disponible sur demande. Les itinéraires sont organisés selon les zones de résidence des élèves.",
+const faqResponses: Record<string, string> = {
+  default: "Bonjour ! Je suis l'assistant virtuel du Complexe Scolaire La Madone. Comment puis-je vous aider aujourd'hui ? (Tarifs, Inscriptions, Cantine, Bus, Visites...)",
+  inscription: "Les pré-inscriptions pour 2024-2025 sont ouvertes ! Les pièces nécessaires sont : acte de naissance, 4 photos d'identité, carnet de santé et bulletin précédent. Vous pouvez pré-inscrire votre enfant directement sur notre site via l'onglet 'Inscription'.",
+  classes: "Nous accueillons les enfants de la Maternelle (TPS à GS, dès 2 ans) jusqu'au CM2. Chaque niveau bénéficie d'un suivi personnalisé et d'un effectif limité à 25 élèves.",
+  horaires: "L'école est ouverte du lundi au vendredi de 07h15 à 18h00. Les cours débutent à 08h00 et finissent à 15h30 (12h30 pour la Maternelle). Une garderie du soir avec étude surveillée est assurée jusqu'à 18h00.",
+  frais: "Les frais annuels débutent à 350 000 FCFA en Maternelle et 420 000 FCFA au Primaire. Le règlement s'effectue en 3 tranches. Utilisez notre 'Simulateur de Tarifs' sur la page d'accueil pour estimer votre budget complet !",
+  contact: `Secrétariat principal : ${school.phone} | Email : ${school.email} | Adresse : Quartier Haie Vive, Cotonou.`,
+  repas: "Notre cantine propose 5 jours par semaine des repas bio et variés préparés sur place par notre chef cuisinier.",
+  transport: "Nous assurons le transport scolaire climatisé dans 3 zones de Cotonou (Haie Vive, Akpakpa, Calavi, Fidjrossè, etc.) avec géolocalisation GPS et accompagnatrice.",
 };
 
 export default function Chatbot() {
@@ -20,54 +21,46 @@ export default function Chatbot() {
   ]);
   const [input, setInput] = useState('');
 
+  const quickQuestions = [
+    { label: "Tarifs & Frais", key: "frais" },
+    { label: "Pièces d'inscription", key: "inscription" },
+    { label: "Cantine & Bus", key: "repas" },
+    { label: "Horaires", key: "horaires" },
+  ];
+
   const getBotResponse = (userMessage: string) => {
-    const lowerMessage = userMessage.toLowerCase();
+    const lower = userMessage.toLowerCase();
+    if (lower.includes('inscription') || lower.includes('inscrire') || lower.includes('dossier')) return faqResponses.inscription;
+    if (lower.includes('classe') || lower.includes('niveau') || lower.includes('maternelle') || lower.includes('cm2')) return faqResponses.classes;
+    if (lower.includes('horaire') || lower.includes('heure') || lower.includes('ouverture')) return faqResponses.horaires;
+    if (lower.includes('frais') || lower.includes('prix') || lower.includes('tarif') || lower.includes('coût')) return faqResponses.frais;
+    if (lower.includes('contact') || lower.includes('téléphone') || lower.includes('adresse')) return faqResponses.contact;
+    if (lower.includes('repas') || lower.includes('cantine') || lower.includes('manger')) return faqResponses.repas;
+    if (lower.includes('transport') || lower.includes('bus') || lower.includes('zone')) return faqResponses.transport;
     
-    if (lowerMessage.includes('inscription') || lowerMessage.includes('inscrire') || lowerMessage.includes('inscrit')) {
-      return faqResponses.inscription;
-    }
-    if (lowerMessage.includes('classe') || lowerMessage.includes('niveau') || lowerMessage.includes('maternelle') || lowerMessage.includes('cm')) {
-      return faqResponses.classes;
-    }
-    if (lowerMessage.includes('horaire') || lowerMessage.includes('heure') || lowerMessage.includes('ouverture')) {
-      return faqResponses.horaires;
-    }
-    if (lowerMessage.includes('frais') || lowerMessage.includes('prix') || lowerMessage.includes('coût') || lowerMessage.includes('tarif')) {
-      return faqResponses.frais;
-    }
-    if (lowerMessage.includes('contact') || lowerMessage.includes('téléphone') || lowerMessage.includes('email') || lowerMessage.includes('appeler')) {
-      return faqResponses.contact;
-    }
-    if (lowerMessage.includes('repas') || lowerMessage.includes('cantine') || lowerMessage.includes('manger')) {
-      return faqResponses.repas;
-    }
-    if (lowerMessage.includes('transport') || lowerMessage.includes('bus') || lowerMessage.includes('navette')) {
-      return faqResponses.transport;
-    }
-    
-    return "Je ne suis pas sûr de comprendre. Pouvez-vous reformuler votre question ? Je peux vous renseigner sur l'inscription, les classes, les horaires, les frais, le contact, les repas ou le transport.";
+    return "Je peux vous renseigner sur les frais, le dossier d'inscription, le transport scolaire, la cantine ou planifier une visite du campus ! N'hésitez pas à nous appeler directement au " + school.phone;
   };
 
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  const handleSend = (e?: React.FormEvent, customText?: string) => {
+    if (e) e.preventDefault();
+    const textToSend = customText || input.trim();
+    if (!textToSend) return;
 
-    const userMessage = input.trim();
-    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
- setInput('');
+    setMessages(prev => [...prev, { role: 'user', text: textToSend }]);
+    if (!customText) setInput('');
 
     setTimeout(() => {
-      setMessages(prev => [...prev, { role: 'bot', text: getBotResponse(userMessage) }]);
-    }, 500);
+      setMessages(prev => [...prev, { role: 'bot', text: getBotResponse(textToSend) }]);
+    }, 400);
   };
 
   return (
     <>
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-primary-600 text-white p-4 rounded-full shadow-lg hover:bg-primary-700 transition-colors z-50"
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-brand-600 to-indigo-600 text-white p-4 rounded-full shadow-2xl hover:shadow-brand-600/40 transition-all z-50 flex items-center justify-center border-2 border-white/20"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
       </motion.button>
@@ -75,68 +68,79 @@ export default function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border-2 border-slate-300 z-50 overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-6 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 overflow-hidden flex flex-col h-[500px]"
           >
-            <div className="bg-primary-600 text-white p-4">
+            {/* Chatbot Header */}
+            <div className="bg-slate-900 text-white p-4 flex items-center justify-between border-b border-slate-800">
               <div className="flex items-center gap-3">
-                <Bot className="w-6 h-6" />
+                <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-gold-400">
+                  <Bot className="w-5 h-5" />
+                </div>
                 <div>
-                  <h3 className="font-semibold">Assistant La Madone</h3>
-                  <p className="text-xs text-primary-100">En ligne</p>
+                  <h3 className="font-bold text-sm text-white">Madone Bot</h3>
+                  <p className="text-[11px] text-emerald-400 font-medium flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                    Assistant virtuel 24/7
+                  </p>
                 </div>
               </div>
+              <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white p-1">
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            <div className="h-96 overflow-y-auto p-4 space-y-4">
-              {messages.map((message, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex gap-3 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
+            {/* Quick Prompts */}
+            <div className="bg-slate-50 p-2.5 border-b border-slate-100 flex overflow-x-auto gap-1.5 text-xs">
+              {quickQuestions.map((q) => (
+                <button
+                  key={q.key}
+                  onClick={() => handleSend(undefined, q.label)}
+                  className="bg-white border border-slate-200 hover:border-brand-400 text-slate-700 font-medium px-2.5 py-1 rounded-lg whitespace-nowrap shadow-2xs hover:bg-brand-50"
                 >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    message.role === 'user' ? 'bg-slate-800' : 'bg-primary-100'
-                  }`}>
-                    {message.role === 'user' ? (
-                      <User className="w-5 h-5 text-white" />
-                    ) : (
-                      <Bot className="w-5 h-5 text-primary-700" />
-                    )}
-                  </div>
-                  <div className={`max-w-[80%] p-3 rounded-lg ${
-                    message.role === 'user'
-                      ? 'bg-slate-800 text-white'
-                      : 'bg-slate-100 text-slate-800'
-                  }`}>
-                    <p className="text-sm">{message.text}</p>
-                  </div>
-                </motion.div>
+                  {q.label}
+                </button>
               ))}
             </div>
 
-            <form onSubmit={handleSend} className="p-4 border-t border-slate-200">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Écrivez votre message..."
-                  className="flex-1 border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-sm"
-                />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  type="submit"
-                  className="bg-primary-600 text-white p-2 rounded-lg hover:bg-primary-700 transition-colors"
-                >
-                  <Send className="w-5 h-5" />
-                </motion.button>
-              </div>
+            {/* Messages body */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50/50 text-sm">
+              {messages.map((m, idx) => (
+                <div key={idx} className={`flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0 ${
+                    m.role === 'user' ? 'bg-slate-800 text-white' : 'bg-brand-600 text-white'
+                  }`}>
+                    {m.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  </div>
+                  <div className={`p-3.5 rounded-2xl max-w-[80%] leading-relaxed ${
+                    m.role === 'user' 
+                      ? 'bg-slate-800 text-white rounded-tr-none' 
+                      : 'bg-white text-slate-800 border border-slate-200/80 shadow-xs rounded-tl-none'
+                  }`}>
+                    {m.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Form Input */}
+            <form onSubmit={handleSend} className="p-3 bg-white border-t border-slate-200 flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Posez votre question..."
+                className="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:ring-2 focus:ring-brand-500 outline-none text-slate-800"
+              />
+              <button
+                type="submit"
+                className="bg-brand-600 hover:bg-brand-700 text-white p-2.5 rounded-xl shadow-md transition-colors"
+              >
+                <Send className="w-4 h-4" />
+              </button>
             </form>
           </motion.div>
         )}

@@ -1,5 +1,5 @@
-import Admission from "../components/sections/Admission";
+import AdmissionWizard from "../components/sections/AdmissionWizard";
 
-export default function AdmissionPage() {
-  return <Admission />;
+export default function Admission() {
+  return <AdmissionWizard />;
 }
