@@ -27,10 +27,7 @@ export default function ParentPortalPreview() {
   const { student, grades, homework, payments } = parentPortalMock;
 
   return (
-    <section className="py-section px-4 sm:px-6 bg-slate-950 text-white relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-brand-600/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-gold-600/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-section px-4 sm:px-6 bg-slate-50 border-t border-slate-100">
 
       {/* Toast Feedback Notification */}
       {toastMessage && (
@@ -45,18 +42,18 @@ export default function ParentPortalPreview() {
         </motion.div>
       )}
 
-      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
+      <div className="max-w-7xl mx-auto space-y-10 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-4 h-4 text-gold-400" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="w-4 h-4 text-brand-600" />
             Écosystème Numérique & Suivi en Direct
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
             Démonstration de l'Espace Parents
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
-            Offrez aux parents un accès 24/7 pour suivre les notes, devoirs, presences et factures de leurs enfants en toute transparence.
+          <p className="text-slate-500 text-base sm:text-lg">
+            Offrez aux parents un accès 24/7 pour suivre les notes, devoirs, présences et factures de leurs enfants en toute transparence.
           </p>
         </div>
 
