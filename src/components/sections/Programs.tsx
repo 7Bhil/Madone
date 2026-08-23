@@ -74,7 +74,7 @@ export default function Programs() {
 
                   {/* Highlights List */}
                   <div className="space-y-2.5">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
                       Points Forts du Programme :
                     </h4>
                     {c.highlights.map((h, i) => (
