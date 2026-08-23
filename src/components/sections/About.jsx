@@ -33,29 +33,28 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Director Quote Box */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 bg-gradient-to-br from-brand-900 via-slate-900 to-brand-950 text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative"
+            className="lg:col-span-6 bg-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-2xl relative border border-slate-700/50"
           >
             <Quote className="w-16 h-16 text-gold-400/20 absolute top-6 right-6 pointer-events-none" />
             <div className="space-y-6 relative z-10">
               <div className="inline-block bg-gold-500/20 border border-gold-400/40 text-gold-300 px-3 py-1 rounded-full text-xs font-bold uppercase">
                 Mot de la Direction
               </div>
-              <p className="text-slate-200 text-base sm:text-lg italic leading-relaxed">
-                "{school.directorQuote}"
+              <p className="text-white text-base sm:text-lg italic leading-relaxed font-medium">
+                &laquo;&nbsp;{school.directorQuote}&nbsp;&raquo;
               </p>
-              <div className="flex items-center gap-4 pt-4 border-t border-slate-800">
-                <div className="w-12 h-12 rounded-full bg-gold-400 text-slate-950 font-bold flex items-center justify-center text-lg">
+              <div className="flex items-center gap-4 pt-4 border-t border-slate-700">
+                <div className="w-12 h-12 rounded-full bg-gold-400 text-slate-950 font-bold flex items-center justify-center text-lg shrink-0">
                   MK
                 </div>
                 <div>
                   <div className="font-bold text-white text-base">{school.director}</div>
-                  <div className="text-xs text-slate-400">{school.directorTitle}</div>
+                  <div className="text-xs text-slate-300">{school.directorTitle}</div>
                 </div>
               </div>
             </div>
@@ -94,7 +93,7 @@ export default function About() {
         </div>
 
         {/* Key Statistics Cards */}
-        <div className="bg-gradient-to-r from-brand-900 via-indigo-900 to-brand-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
+        <div className="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl border border-slate-800">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-brand-800">
             {about.stats.map((stat, idx) => (
               <div key={idx} className="pt-4 lg:pt-0 px-2">

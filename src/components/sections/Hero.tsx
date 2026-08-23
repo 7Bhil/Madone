@@ -5,7 +5,7 @@ import { school, about } from "../../data/content";
 
 export default function Hero() {
   return (
-    <section className="relative pt-12 pb-14 lg:pt-16 lg:pb-20 bg-gradient-to-b from-slate-900 via-brand-950 to-slate-900 text-white overflow-hidden">
+    <section className="relative pt-12 pb-14 lg:pt-16 lg:pb-20 bg-slate-900 text-white overflow-hidden">
       {/* Glow background elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-[30rem] h-[30rem] bg-gold-600/15 rounded-full blur-3xl pointer-events-none" />
